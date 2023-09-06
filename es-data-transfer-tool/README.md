@@ -11,6 +11,12 @@ Elasticsearch 备份和恢复工具是一个基于 Java 的工具，旨在高效
 1. 系统上应安装 Java 8 或更高版本。
 2. 可访问的、正在运行的 Elasticsearch 集群。
 
+## 打包方式
+```bash
+./gradlew clean :es-data-transfer-tool:packageZip
+```
+成果物在 `/es-data-transfer-tool/build/dist/es-data-transfer-tool-distribution-1.1.0.zip`
+
 ## 命令行参数
 
 该工具接受以下命令行参数：
