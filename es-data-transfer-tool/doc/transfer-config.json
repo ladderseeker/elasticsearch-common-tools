@@ -1,0 +1,18 @@
+{
+  "action":  "backup",
+  "endpoint":  "localhost:9200",
+  "username": "admin",
+  "password": "admin",
+  "indexName":  "my_index_name",
+  "filePath":  "./my_index-backup.json",
+  "dslQuery": {
+    "query": {
+      "range": {
+        "structTime": {
+          "gte": "2023-01-11T00:00:00.000+08:00",
+          "lte": "2023-01-21T00:00:00.000+08:00"
+        }
+      }
+    }
+  }
+}

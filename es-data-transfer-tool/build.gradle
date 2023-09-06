@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    maven { url 'https://maven.aliyun.com/repository/central' }
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
+}
+
+group = 'com.product.tool'
+version = '1.1.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    compileOnly('org.projectlombok:lombok:1.18.28')
+    annotationProcessor('org.projectlombok:lombok:1.18.28')
+    testAnnotationProcessor('org.projectlombok:lombok:1.18.28')
+
+    implementation('org.elasticsearch.client:elasticsearch-rest-high-level-client:7.3.2')
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.14.3')
+    implementation('commons-cli:commons-cli:1.5.0')
+    implementation('org.slf4j:slf4j-api:1.7.36')
+    implementation('org.apache.logging.log4j:log4j-slf4j-impl:2.20.0')
+    implementation('org.apache.logging.log4j:log4j-core:2.20.0')
+
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.9.3')
+    testImplementation('org.junit.jupiter:junit-jupiter-engine:5.9.3')
+
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    manifest {
+        attributes 'Main-Class': 'com.product.tool.Main'
+    }
+    exclude 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/*.SF'
+    configurations  = [project.configurations.runtimeClasspath]
+}
+
+var folderName = 'es-data-transfer-tool-distribution-' + version
+
+tasks.register('packageZip', Zip) {
+    from shadowJar
+    from 'README.md'
+    from 'doc/transfer-config.json'
+    from 'doc/bulk_index.sh'
+    into folderName
+    archiveFileName.set(folderName + '.zip')
+    destinationDirectory.set(layout.buildDirectory.dir("dist"))
+}
+
+test {
+    useJUnitPlatform()
+}
