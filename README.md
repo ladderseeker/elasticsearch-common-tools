@@ -79,7 +79,7 @@ java -jar es-data-transfer-tool-1.1.0.jar --config ./transfer-config.json
 ```json
 {
   "action":  "backup",
-  "endpoint":  "localhost:9200",
+  "endpoint": "localhost:9200",
   "username": "admin",
   "password": "admin",
   "indexName":  "my_index_name",
