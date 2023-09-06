@@ -79,10 +79,10 @@ java -jar es-data-transfer-tool-1.1.0.jar --config ./transfer-config.json
 ```json
 {
   "action":  "backup",
-  "endpoint":  "10.194.224.118:9200",
+  "endpoint":  "localhost:9200",
   "username": "admin",
   "password": "admin",
-  "indexName":  "a-tps-alarm-inter-2023.01.11-02.07",
+  "indexName":  "my_index_name",
   "filePath":  "./my_index-backup.json",
   "dslQuery": {
     "query": {
