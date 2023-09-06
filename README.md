@@ -13,6 +13,7 @@ Elasticsearch 备份和恢复工具是一个基于 Java 的工具，旨在高效
 
 ## 打包方式
 - Gradle
+
 在根目录下执行
 ```bash
 ./gradlew clean :es-data-transfer-tool:packageZip
@@ -20,6 +21,7 @@ Elasticsearch 备份和恢复工具是一个基于 Java 的工具，旨在高效
 打包成果物在 `/es-data-transfer-tool/build/dist/es-data-transfer-tool-distribution-1.1.0.zip`
 
 - Maven
+
 进入 /es-data-transfer-tool 执行
 ```bash
 cd /es-data-transfer-tool
